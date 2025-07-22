@@ -29,7 +29,14 @@ namespace WebApi.Controllers
                 request.Password
             );
 
-            return Ok(true);
+            if (credentialsValid)
+            {
+                return Ok(credentialsValid);
+            }
+            else
+            {
+                return Unauthorized("Wrong username or password");
+            }
         }
 
     }
